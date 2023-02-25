@@ -5,6 +5,7 @@ import { UploadFileRounded } from "@mui/icons-material";
 import { useEffect } from "react";
 import { posterContext } from "../../context/posterContext";
 import { useNavigate } from "react-router-dom";
+import CancelIcon from "@mui/icons-material/Cancel";
 import Vibrant from "node-vibrant";
 
 function Form() {
@@ -25,37 +26,50 @@ function Form() {
     setPosterObj({ ...posterObj, [e.target.name]: e.target.value });
   };
 
-  const handleAuthorChange = (e) => {
-    setPosterObj({
-      ...posterObj,
-      authorImage: URL.createObjectURL(e.target.files[0]),
-    });
-  };
-  const handleImageChange = async (e) => {
-    const img_url = URL.createObjectURL(e.target.files[0]);
-
-    const paletteData = await Vibrant.from(img_url)
-      .getPalette()
-      .then((data) => {
-        let colors = [];
-        colors.push(data.DarkVibrant.getHex());
-        colors.push(data.LightVibrant.getHex());
-
-        return colors;
+  const handleAuthorChange = (e, remove) => {
+    if (!remove) {
+      setPosterObj({
+        ...posterObj,
+        authorImage: URL.createObjectURL(e.target.files[0]),
       });
-    setPosterObj({
-      ...posterObj,
-      themeImage: img_url,
-      colors: paletteData,
-    });
+    } else {
+      setPosterObj({
+        ...posterObj,
+        authorImage: "",
+      });
+    }
   };
-  useEffect(() => {
-    console.log(posterObj);
-  }, [posterObj]);
+  const handleImageChange = async (e, remove) => {
+    if (!remove) {
+      const img_url = URL.createObjectURL(e.target.files[0]);
+
+      const paletteData = await Vibrant.from(img_url)
+        .getPalette()
+        .then((data) => {
+          let colors = [];
+          colors.push(data.DarkVibrant.getHex());
+          colors.push(data.LightVibrant.getHex());
+
+          return colors;
+        });
+      setPosterObj({
+        ...posterObj,
+        themeImage: img_url,
+        colors: paletteData,
+      });
+    } else {
+      setPosterObj({
+        ...posterObj,
+        themeImage: "",
+        colors: [],
+      });
+    }
+  };
+  console.log(Object.values(posterObj).some((item) => item.length === 0));
   return (
     <div className="form">
       <img src={logo} alt="" />
-      <p>Poster Generator</p>
+      <p className="title">Poster Generator</p>
       <form className="form_container">
         <label>
           <p>News Type</p>
@@ -102,6 +116,12 @@ function Form() {
         ) : (
           <div className="img_container">
             <img src={posterObj.authorImage} alt="" />
+            <div
+              className="cancel_button"
+              onClick={(e) => handleAuthorChange(e, true)}
+            >
+              <CancelIcon />
+            </div>
           </div>
         )}
         {posterObj.themeImage === "" ? (
@@ -124,6 +144,12 @@ function Form() {
         ) : (
           <div className="img_container">
             <img src={posterObj.themeImage} alt="" />
+            <div
+              className="cancel_button"
+              onClick={(e) => handleImageChange(e, true)}
+            >
+              <CancelIcon />
+            </div>
           </div>
         )}
 
@@ -138,7 +164,13 @@ function Form() {
           </div>
         ) : null}
         <div className="button_container">
-          <button type="button" onClick={onSubmit}>
+          <button
+            type="button"
+            onClick={onSubmit}
+            disabled={Object.values(posterObj).some(
+              (item) => item.length === 0
+            )}
+          >
             Generate
           </button>
         </div>

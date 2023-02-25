@@ -3,7 +3,7 @@ import { posterContext } from "../../context/posterContext";
 import "./concise.scss";
 import Lines from "../Lines/Lines";
 import logo from "../../assets/logo.jpg";
-function Concise() {
+function Concise({ circle }) {
   const { state } = useContext(posterContext);
   console.log(state);
   return (
@@ -18,6 +18,7 @@ function Concise() {
             src={state.themeImage}
             alt=""
             style={{ border: `10px solid ${state.colors[0]}` }}
+            className={circle ? "image circle" : "image"}
           />
         </div>
       </div>
