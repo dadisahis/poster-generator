@@ -7,6 +7,7 @@ import * as htmlToImage from "html-to-image";
 import download from "downloadjs";
 import { posterContext } from "../../context/posterContext";
 import { Download } from "@mui/icons-material";
+import Expanse from "../../Components/Expanse/Expanse";
 function Themes() {
   const { state } = useContext(posterContext);
   const navigate = useNavigate();
@@ -46,6 +47,18 @@ function Themes() {
           <button
             className="button"
             onClick={() => downloadImage("theme_circle")}
+          >
+            Download Poster
+            <Download />
+          </button>
+        </div>
+        <div className="theme_item">
+          <div id="theme_expanse">
+            <Expanse />
+          </div>
+          <button
+            className="button"
+            onClick={() => downloadImage("theme_expanse")}
           >
             Download Poster
             <Download />

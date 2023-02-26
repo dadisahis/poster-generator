@@ -5,7 +5,6 @@ import Home from "./Pages/Home/Home";
 import Themes from "./Pages/Themes/Themes";
 function App() {
   const { state } = useContext(posterContext);
-  console.log(state);
   return (
     <>
       <BrowserRouter>

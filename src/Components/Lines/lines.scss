@@ -9,3 +9,31 @@
     height: 250px;
   }
 }
+
+@media screen and (max-width: 640px) {
+  .lines {
+    margin: 10px;
+    .line_one {
+      width: 110px;
+      height: 5px;
+    }
+    .line_two {
+      width: 5px;
+      height: 150px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .lines {
+    margin: 10px;
+    .line_one {
+      width: 80px;
+      height: 5px;
+    }
+    .line_two {
+      width: 5px;
+      height: 100px;
+    }
+  }
+}

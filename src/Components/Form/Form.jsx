@@ -2,7 +2,6 @@ import React, { useContext, useRef, useState } from "react";
 import "./form.scss";
 import logo from "../../assets/logo.jpg";
 import { UploadFileRounded } from "@mui/icons-material";
-import { useEffect } from "react";
 import { posterContext } from "../../context/posterContext";
 import { useNavigate } from "react-router-dom";
 import CancelIcon from "@mui/icons-material/Cancel";
@@ -19,7 +18,6 @@ function Form() {
   const authorPicRef = useRef(null);
   const themePicRef = useRef(null);
   const handleClick = (ref) => {
-    console.log(ref);
     ref.current?.click();
   };
   const handleChange = (e) => {
@@ -65,7 +63,6 @@ function Form() {
       });
     }
   };
-  console.log(Object.values(posterObj).some((item) => item.length === 0));
   return (
     <div className="form">
       <img src={logo} alt="" />

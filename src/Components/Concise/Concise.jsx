@@ -5,12 +5,13 @@ import Lines from "../Lines/Lines";
 import logo from "../../assets/logo.jpg";
 function Concise({ circle }) {
   const { state } = useContext(posterContext);
-  console.log(state);
   return (
     <div className="concise_container">
       <div
         className="concise_left"
-        style={{ backgroundColor: state.colors[0] }}
+        style={{
+          backgroundColor: state.colors[0],
+        }}
       >
         <Lines backgroundColor={state.colors[1]} />
         <div className="img_container">
