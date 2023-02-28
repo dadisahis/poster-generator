@@ -9,6 +9,19 @@
     height: 250px;
   }
 }
+@media screen and (max-width: 800px) {
+  .lines {
+    margin: 10px;
+    .line_one {
+      width: 120px;
+      height: 8px;
+    }
+    .line_two {
+      width: 8px;
+      height: 170px;
+    }
+  }
+}
 
 @media screen and (max-width: 640px) {
   .lines {
