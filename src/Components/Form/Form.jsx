@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState } from "react";
 import "./form.scss";
-import logo from "../../assets/logo.jpg";
+import logo from "../../assets/logo.png";
 import { UploadFileRounded } from "@mui/icons-material";
 import { posterContext } from "../../context/posterContext";
 import { useNavigate } from "react-router-dom";

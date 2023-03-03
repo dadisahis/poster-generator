@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { posterContext } from "../../context/posterContext";
-import logo from "../../assets/logo.jpg";
+import logo from "../../assets/logo.png";
 import "./expanse.scss";
 
 function Expanse() {
@@ -13,7 +13,7 @@ function Expanse() {
         backgroundSize: "contain",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        backgroundColor: state.colors[0],
+        backgroundColor: state.colors[1],
       }}
     >
       <img src={logo} alt="" className="logo" />
