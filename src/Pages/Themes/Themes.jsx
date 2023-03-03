@@ -14,8 +14,8 @@ function Themes() {
 
   const downloadImage = (id) => {
     var node = document.getElementById(id);
-    htmlToImage.toPng(node).then(function (dataURL) {
-      download(dataURL, `malayalunatu-${state.title}.png`);
+    htmlToImage.toJpeg(node).then(function (dataURL) {
+      download(dataURL, `malayalunatu-${state.title}.jpeg`);
     });
   };
   return (
